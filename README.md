@@ -10,6 +10,8 @@ Yeung Nga Ting Winnie(13382717)
 
 Application link: https://github.com/EnmaYuki/record_system.git
 
+WAMP link: https://drive.google.com/file/d/1iQNaMOt6-pfZYQaZuUhyuB-7Dh8TVBQI/view?usp=drive_link
+
 ********************************************
 # Student record system
 This system is for managing student records of the School of Science and Technology. 
