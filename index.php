@@ -34,7 +34,7 @@
                         <input type="password" id="password" name="password" required><br><br>
                         <input type="submit" value="Login">
                     </form>
-<!--
+                    <!--
                     <script>
                         function checkPassword(event) {
                             event.preventDefault(); // Prevent form from submitting`````
