@@ -24,7 +24,7 @@ Through the login interface, each user (Student, Teacher, Admin) can access the 
 
 Each user has a role('t for teacher', 's for student' and 'a for admin'), username and password;
 
-	{'userid'.'role','password'}
+	{'userid','role','password'}
  
 	{'ADMIN', 'a', 'administrator'},
  
@@ -47,4 +47,26 @@ After successful login, user can enter the page based on their role.
 In the home page, each user can log out their account by clicking logout.
 
 ********************************************
-# 
+# Student
+- View academic record
+- View personal information
+- Edit/Update personal information
+
+********************************************
+# Teacher
+- Select students from the courses they are teaching to
+- View students' academic record
+- Update students' academic record
+
+********************************************
+# Admin
+- View students' academic record
+- Edit and remove course information
+- Add and remove all user's information
+- Review course information
+
+********************************************
+# Project Status
+We apologize for the late implementation which cause the incomplete status of the task. 
+
+The page of admin has not already done so that those function of admin is fail to implement.
