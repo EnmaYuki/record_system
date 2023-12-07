@@ -23,7 +23,9 @@ It is convenience to open through the broswer, so the user can access easily.
 Through the login interface, each user (Student, Teacher, Admin) can access the student record system by entering their role first, then entering the username and password.
 
 Each user has a role('t for teacher', 's for student' and 'a for admin'), username and password;
+
 [
+
 	{'userid'.'role','password'}
  
 	{'ADMIN', 'a', 'administrator'},
