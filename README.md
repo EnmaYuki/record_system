@@ -24,8 +24,6 @@ Through the login interface, each user (Student, Teacher, Admin) can access the 
 
 Each user has a role('t for teacher', 's for student' and 'a for admin'), username and password;
 
-[
-
 	{'userid'.'role','password'}
  
 	{'ADMIN', 'a', 'administrator'},
@@ -41,8 +39,6 @@ Each user has a role('t for teacher', 's for student' and 'a for admin'), userna
 	{'38459341', 't', '14395483'},
  
 	{'38459888', 't', '88895483'}
- 
-]
 
 After successful login, user can enter the page based on their role.
 
