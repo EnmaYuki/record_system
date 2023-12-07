@@ -1,19 +1,40 @@
 <?php
-if(isset($_POST["submit"])){
-    $role=$_POST["userid"].; 
-    $userid = $_POST["uid"];
-    $password =  $_POST["pwd"];
+// Get the username and password from the form
+$username = $_POST['username'];
+$password = $_POST['password'];
 
-    require_once './database.php';
-    require_once './functions.php';
+// Extract the role from the username
+$role = $username[0];
 
-    if (emptyLogin($userid,$role, $password) !== false) {
-        alert("error=emptyinput");
-        exit();
+// Remove the role character from the username
+$userid = substr($username, 1);
+
+require "database.php";
+
+// Prepare the SQL query to check the user credentials
+$sql = "SELECT * FROM user WHERE userid = '$userid' AND role = '$role' AND password = '$password'";
+$result = $conn->query($sql);
+
+// Check if the user exists and the password is correct
+if ($result->num_rows == 1) {
+    // User authentication successful
+    session_start();
+    $_SESSION['username'] = $username;
+
+    // Redirect to the appropriate page based on the role
+    if ($role == 's') {
+        header("Location: student.php");
+    } elseif ($role == 't') {
+        header("Location: teacher.php");
+    } else {
+        // Invalid role
+        echo "Invalid role!";
     }
-    loginUser($conn, $username,$role, $password);
 } else {
-    window.alert("error=emptyinput");
-    exit();
+    // Invalid username or password
+    echo "Invalid username or password!";
 }
-   
+
+// Close the database connection
+$conn->close();
+?>

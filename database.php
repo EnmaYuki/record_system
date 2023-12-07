@@ -4,16 +4,16 @@
   // Database name
   $dbname = "academicrecord";
   // Database user account
-  $dbuser = "group27";
+  $dbuser = "root";
   // Database password
-  $dbpassword = "350group27";
+  $dbpassword = "";
   
   // Create connection
-  $connect = new mysqli($servername, $dbuser, $dbpassword, $dbname);
+  $conn = new mysqli($servername, $dbuser, $dbpassword, $dbname);
   //mysqli_set_charset($conn, "utf8");
  
   // Check connection
-  if ($connect->connect_error) {
-    die("Connection failed: " . $connect->connect_error);
+  if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
   }
 ?>

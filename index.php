@@ -27,13 +27,13 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-12">
-              <form action="login.php" method="post" onsubmit="checkPassword(event)" >
-            <label for="userid">User ID:</label><br>
-            <input type="text" id="userid" name="userid"><br>
-            <label for="password">Password:</label><br>
-            <input type="password" id="password" name="password"><br><br>
-            <input type="submit" value="Submit">
-        </form>
+                    <form action="login.php" method="POST">
+                        <label for="username">Username:</label>
+                        <input type="text" id="username" name="username" required><br><br>
+                        <label for="password">Password:</label>
+                        <input type="password" id="password" name="password" required><br><br>
+                        <input type="submit" value="Login">
+                    </form>
 <!--
                     <script>
                         function checkPassword(event) {
