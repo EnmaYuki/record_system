@@ -19,13 +19,15 @@ $result = $conn->query($sql);
 if ($result->num_rows == 1) {
     // User authentication successful
     session_start();
-    $_SESSION['username'] = $username;
+    $_SESSION['userids'] = $username;
 
-    // Redirect to the appropriate page based on the role
+    // Redirect to the appropriate page based on the role and user ID
     if ($role == 's') {
-        header("Location: student.php");
+        header("Location: student/id_" . $userid . ".php");
     } elseif ($role == 't') {
-        header("Location: teacher.php");
+        header("Location: teacher/id_" . $userid . ".php");
+    } elseif ($role == 'a') {
+        header("Location: admin.php");
     } else {
         // Invalid role
         echo "Invalid role!";

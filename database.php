@@ -4,9 +4,11 @@
   // Database name
   $dbname = "academicrecord";
   // Database user account
-  $dbuser = "root";
+  //$dbuser = "root";
+  $dbuser = "group27";
   // Database password
-  $dbpassword = "";
+  //$dbpassword = "";
+  $dbpassword = "350group27";
   
   // Create connection
   $conn = new mysqli($servername, $dbuser, $dbpassword, $dbname);

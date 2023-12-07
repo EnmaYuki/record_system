@@ -1,47 +1,106 @@
-<!-- I want to test the page in html format 
-If need to test php please change to .php and test header.php and footer.php
+<?php
+session_start();
 
-<?php include 'header.php';?>
-<?php include 'footer.php';?>
--->
+// Check if the user is logged in as a teacher
+if ($_SESSION['username'][0] != 't') {
+    header("Location: login.php");
+    exit();
+}
+
+// Get the user ID from the session
+$userid = substr($_SESSION['username'], 1);
+require "database.php";
+
+// Prepare the SQL query to retrieve the teacher's name
+$sql = "SELECT * FROM teacher, course WHERE teacherid = '$userid' and course.courseid= teacher.courseid";
+
+$result = $conn->query($sql);
+
+if ($result->num_rows ) {
+
+    $courses = array();
+    while ($row = $result->fetch_assoc()) {
+        $teacherName = $row["name"];
+        $courseID = $row["courseid"];
+        $courseName = $row["title"];
+        $courses[$courseID] = $courseName;        
+    }
+    /*
+        // Output data of the first row
+        $row = $result->fetch_assoc();
+        $teacherName = $row["name"];
+        $courseName = $row["title"];
+        $courses = array();
+        
+        // Fetch all the courses the teacher is responsible for
+        while ($row = $result->fetch_assoc()) {
+            $courseID = $row["courseid"];
+            $courseTitle = $row["title"];
+            $courses[$courseID] = $courseTitle;
+        }
+    */
+}
+
+//$conn->close();
+?>
+
 
 <!DOCTYPE html>
 <html>
 <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <style>
-        table, th, td {
-          border:1px solid black;
-        }
-        </style>
     <title>Student Record System (Teacher)</title>
 </head>
 <body>
-    <h1>Teacher</h1>
-    <table style="width:100%">
-        <tr>
-            <th>Teacher Name:</th>
-            <th> Chris Wong</th>
-        </tr>
-        <tr>
-            <td><button onclick="alert('Test button')">Info</button></td>
-            <td><button onclick="alert('Test button')">Reset Password</button></td>
-        </tr>
-
-        <tr>
-            
-        </tr>
-    </table>
-    <br>
-    <form action="/submit" method="post">
-        <label for="courseID">Course ID:</label><br>
-        <input type="text" id="courseID" name="courseID"><br>
-        <label for="score">Score:</label><br>
-        <input type="number" id="score" name="score"><br>
-        <input type="submit" value="Submit">
+    <h1>Student Record System (Teacher)</h1>
+    <p>Teacher Name: <?php echo $teacherName; ?></p>
+    <h3>Course</h3>
+    <form action="teacher.php" method="POST">
+        <select name="course" onchange="this.form.submit()">
+            <option value="">Select a course</option>
+            <?php
+            foreach ($courses as $courseID => $courseTitle) {
+                $selected = '';
+                if (isset($_POST['course']) && $_POST['course'] == $courseID) {
+                    $selected = 'selected';
+                }
+                echo "<option value='$courseID' $selected>$courseTitle</option>";
+            }
+            ?>
+        </select>
     </form>
+
+    <?php
+    if (isset($_POST['course'])) {
+        $selectedCourseID = $_POST['course'];
+        $sql = "SELECT distinct student.studentid,assessment_record.aid, assessment_record.score FROM  student INNER JOIN assessment_record ON student.studentid = assessment_record.student_id WHERE assessment_record.course_id = '$selectedCourseID'";
+        $result = $conn->query($sql);
+
+        if ($result->num_rows > 0) {
+            echo "<h3>Student Assessments</h3>";
+            echo "<table>";
+            echo "<tr><th>Student ID</th><th>Assessment Name</th><th>Assessment Score</th><th>Update Score</th></tr>";
+
+            while ($row = $result->fetch_assoc()) {
+                $studentID = $row["studentid"];
+                $assessmentName = $row["aid"];
+                $assessmentScore = $row["score"];
+
+                echo "<tr>";
+                echo "<td>$studentID</td>";
+                echo "<td>$assessmentName</td>";
+                echo "<td>$assessmentScore</td>";
+                echo "<td><form action='update_score.php' method='POST'><input type='hidden' name='course' value='$selectedCourseID'><input type='hidden' name='assessment' value='$assessmentName'><input type='hidden' name='student' value='$studentID'><input type='number' name='score' value='$assessmentScore'><input type='submit' value='Update'></form></td>";
+                echo "</tr>";
+            }
+            echo "</table>";
+        } else {
+            echo "No student assessments found for the selected course.";
+        }
+    }
+    ?>
+
     <br>
-    <!--Need to improve when the JS start coding-->
-    <td><button onclick="document.location='index.html'">Logout</button></td>
+    <a href="reset_password.php">Reset Password</a>
+    <br><a href="../index.php">Logout</a>
 </body>
 </html>
