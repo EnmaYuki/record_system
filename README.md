@@ -12,12 +12,12 @@ Application link: https://github.com/EnmaYuki/record_system.git
 
 ********************************************
 # Student record system
-This system is for managing student records of the School of Science and Technology
-It is convenience to open through the broswer, so the user can access easily
+This system is for managing student records of the School of Science and Technology. 
+It is convenience to open through the broswer, so the user can access easily.
 
 ********************************************
 # Login
-Through the login interface, each user (Student, Teacher, Admin) can access the student record system by entering their role first, then entering the username and password
+Through the login interface, each user (Student, Teacher, Admin) can access the student record system by entering their role first, then entering the username and password.
 
 Each user has a role('t for teacher', 's for student' and 'a for admin'), username and password;
 [
