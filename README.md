@@ -56,7 +56,11 @@ After successful login, user can enter the page based on their role.
 
 ********************************************
 # Logout
-In the home page, each user can log out their account by clicking logout.
+In the each page, each user can log out their account by clicking logout.
+
+********************************************
+# Reset password
+In the home page, each user can reset their password by clicking 'Reset Password'.
 
 ********************************************
 # Student
@@ -118,4 +122,6 @@ After login, admin can see the functions.
 # Project Status
 We apologize for the late implementation which cause the incomplete status of the task. 
 
-The page of student and teacher has not already done so that those function of personal information and the assessment is fail to implement.
+The function of reset password is not yet finish, so it is failed to work.
+
+Also, the page of student and teacher has not already done so that those function of personal information and the assessment is fail to implement.
