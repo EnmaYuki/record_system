@@ -6,7 +6,7 @@ if ($_SESSION['username'][0] != 't') {
     header("Location: login.php");
     exit();
 }
-print("g");
+//print("g");
 // Get the user ID from the session
 $userid = substr($_SESSION['username'], 1);
 require "database.php";
@@ -72,23 +72,25 @@ if ($result->num_rows ) {
     <?php
     if (isset($_POST['course'])) {
         $selectedCourseID = $_POST['course'];
-        $sql = "SELECT distinct student.studentid,assessment_record.aid, assessment_record.score FROM  student INNER JOIN assessment_record ON student.studentid = assessment_record.student_id WHERE assessment_record.course_id = '$selectedCourseID'";
+        //$sql = "SELECT distinct student.studentid,assessment_record.aid, assessment_record.score FROM  student INNER JOIN assessment_record ON student.studentid = assessment_record.student_id WHERE assessment_record.course_id = '$selectedCourseID'";
+        $sql = "SELECT distinct student.studentid,assessment_record.aid, assessment_record.score, total_score FROM  (student INNER JOIN assessment_record ON student.studentid = assessment_record.student_id),assessment WHERE assessment_record.course_id = '$selectedCourseID' AND assessment.aid=assessment_record.aid and assessment.courseid=assessment_record.course_id;";
         $result = $conn->query($sql);
 
         if ($result->num_rows > 0) {
             echo "<h3>Student Assessments</h3>";
             echo "<table>";
-            echo "<tr><th>Student ID</th><th>Assessment Name</th><th>Assessment Score</th><th>Update Score</th></tr>";
+            echo "<tr><th>Student ID</th><th>Name</th><th>Total Score</th><th>Update Score</th></tr>";
 
             while ($row = $result->fetch_assoc()) {
                 $studentID = $row["studentid"];
                 $assessmentName = $row["aid"];
+                $assessmentTotal = $row["total_score"];
                 $assessmentScore = $row["score"];
 
                 echo "<tr>";
                 echo "<td>$studentID</td>";
                 echo "<td>$assessmentName</td>";
-                echo "<td>$assessmentScore</td>";
+                echo "<td>$assessmentTotal</td>";
                 echo "<td><form action='update_score.php' method='POST'><input type='hidden' name='course' value='$selectedCourseID'><input type='hidden' name='assessment' value='$assessmentName'><input type='hidden' name='student' value='$studentID'><input type='number' name='score' value='$assessmentScore'><input type='submit' value='Update'></form></td>";
                 echo "</tr>";
             }

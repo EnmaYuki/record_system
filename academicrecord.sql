@@ -149,7 +149,6 @@ CREATE TABLE IF NOT EXISTS `student` (
   `studentid` varchar(8) COLLATE utf8mb4_unicode_ci NOT NULL,
   `sname` varchar(20) COLLATE utf8mb4_unicode_ci NOT NULL,
   `courseid` varchar(5) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `GPA` float DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `id` (`id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -158,11 +157,11 @@ CREATE TABLE IF NOT EXISTS `student` (
 -- Dumping data for table `student`
 --
 
-INSERT INTO `student` (`id`, `studentid`, `sname`, `courseid`, `GPA`) VALUES
-(1, '11223654', 'Apple', 'BA202', 2.42),
-(2, '12353265', 'Chan', 'CE301', 1.712),
-(3, '14223652', 'Bat', 'CE103', 5.32),
-(7, '14223652', 'Bat', 'EG105', 5.32);
+INSERT INTO `student` (`id`, `studentid`, `sname`, `courseid`) VALUES
+(1, '11223654', 'Apple', 'BA202'),
+(2, '12353265', 'Chan', 'CE301'),
+(3, '14223652', 'Bat', 'CE103'),
+(4, '14223652', 'Bat', 'EG105');
 
 -- --------------------------------------------------------
 

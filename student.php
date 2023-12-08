@@ -49,9 +49,7 @@ if ($result->num_rows>0 ) {
     <title>Student Record System (Student)</title>
 </head>
 <body>
-    <?php
-    echo '<pre>'; print_r($courses); echo '</pre>';
-    ?>
+    
     <h1>Student Record System (student)</h1>
     <p>student Name: <?php echo $studentName; ?></p>
     <h3>Course</h3>
@@ -73,24 +71,25 @@ if ($result->num_rows>0 ) {
     <?php
     if (isset($_POST['course'])) {
         $selectedCourseID = $_POST['course'];
-        $sql = "SELECT distinct student.studentid,assessment_record.aid, assessment_record.score FROM  student INNER JOIN assessment_record ON student.studentid = assessment_record.student_id WHERE assessment_record.course_id = '$selectedCourseID'";
+        //$sql = "SELECT distinct student.studentid,assessment_record.aid, assessment_record.score FROM  student INNER JOIN assessment_record ON student.studentid = assessment_record.student_id WHERE assessment_record.course_id = '$selectedCourseID'";
+        $sql = "SELECT `course`.`title`,4*sum((`assessment_record`.`score`/`assessment`.`total_score`)*(`assessment`.`weighting`/100))as `gpa` from `student`,`course`,`assessment`,`assessment_record`where  `assessment`.`aid`=`assessment_record`.`aid` and `assessment`.`courseid`=`student`.`courseid` and `assessment_record`.`course_id`=`assessment`.`courseid` and `course`.`courseid`=`student`.`courseid` and student.courseid='$selectedCourseID';";
         $result = $conn->query($sql);
 
         if ($result->num_rows > 0) {
             echo "<h3>Student Assessments</h3>";
             echo "<table>";
-            echo "<tr><th>Student ID</th><th>Assessment Name</th><th>Assessment Score</th><th>Update Score</th></tr>";
+            echo "<tr><th>Course Name</th><th>course gpa</th></tr>";
 
             while ($row = $result->fetch_assoc()) {
-                $studentID = $row["studentid"];
-                $assessmentName = $row["aid"];
-                $assessmentScore = $row["score"];
+               // $studentID = $row["studentid"];
+                $title = $row["title"];
+                $gpa = $row["gpa"];
 
                 echo "<tr>";
-                echo "<td>$studentID</td>";
-                echo "<td>$assessmentName</td>";
-                echo "<td>$assessmentScore</td>";
-                echo "<td><form action='update_score.php' method='POST'><input type='hidden' name='course' value='$selectedCourseID'><input type='hidden' name='assessment' value='$assessmentName'><input type='hidden' name='student' value='$studentID'><input type='number' name='score' value='$assessmentScore'><input type='submit' value='Update'></form></td>";
+                //echo "<td>$studentID</td>";
+                echo "<td>$title</td>";
+                echo "<td>$gpa</td>";
+                //echo "<td><form action='display_gpa.php' method='POST'><input type='hidden' name='course' value='$selectedCourseID'><input type='hidden' name='assessment' value='$assessmentName'><input type='hidden' name='student' value='$studentID'><input type='number' name='score' value='$assessmentScore'><input type='submit' value='Update'></form></td>";
                 echo "</tr>";
             }
             echo "</table>";

@@ -5,7 +5,7 @@ session_start();
 
 // Check if the user is logged in as a teacher
 if ($_SESSION['username'][0] != 't') {
-    header("Location: login.php");
+    header("Location: index.php");
     exit();
 }
 
@@ -24,6 +24,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     if ($conn->query($sql) === TRUE) {
         echo "<script>window.alert('Score updated successfully.');</script>";
+        header("location: teacher.php");
         exit();
     } else {
         echo "Error updating score: " . $conn->error;
