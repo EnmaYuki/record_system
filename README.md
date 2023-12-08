@@ -55,6 +55,7 @@ In the home page, each user can log out their account by clicking logout.
 ********************************************
 # Student
 After login, student can see their name on the page.
+
 - View academic record
   
   1. Select the course that the student wants to check its acadmeic record
@@ -62,19 +63,31 @@ After login, student can see their name on the page.
   2. Then student can see the assessment name and the score of corresponding assessment.
   
 - View personal information
+  
   Student can directly see their personal information on the page.
+  
 - Edit/Update personal information
+  
   If student want to edit or update their personal information, they just need to click on the 'Edit' button and enter the content.
 
 ********************************************
 # Teacher
+After login, teacher can see their name on the page.
+
 - Select students from the courses they are teaching to
-- View students' academic record
-- Update students' academic record
+
+  Teacher can view the student after select a course from the courses.
+  
+- View and Update students' academic record
+
+  Teacher can view the original score of the corresponding assessment of student.
+
+  If they want to update the score, they just need to enter the score and click on the 'Update' button.
 
 ********************************************
 # Admin
-- View students' academic record
+After login, admin can see the functions.
+
 - Edit and remove course information
 - Add and remove all user's information
 - Review course information
