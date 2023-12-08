@@ -66,7 +66,7 @@ After login, student can see their name on the page.
   
   1. Select the course that the student wants to check its acadmeic record
   
-  2. Then student can see the assessment name and the score of corresponding assessment.
+  2. Then student can see the course name and the gpa of the relevant course.
   
 - View personal information
   
@@ -90,16 +90,32 @@ After login, teacher can see their name on the page.
 
   If they want to update the score, they just need to enter the score and click on the 'Update' button.
 
+- Add assessment
+  Teacher can add assessment by entering id, courseid, aid, weighting and total score, then press 'Add assessment' button.
+
 ********************************************
 # Admin
 After login, admin can see the functions.
 
-- Edit and remove course information
-- Add and remove all user's information
-- Review course information
+- Edit teachers
+  1. Select the teacher id which want to be deleted, then press 'Delete Teacher' button.
+  2. Add teacher by entering the teacher id, teacher name and mobile number, then press 'Add Teacher' button.
+  
+  If it is successful, it would show up a message.
+
+- Edit students
+  1. Select the student id which want to be deleted, then press 'Delete Student' button.
+  2. Add teacher by entering the student id, student name and course code, then press 'Add Student' button.
+  
+  If it is successful, it would show up a message.
+
+- Edit course information
+  Add course by entering the course id, course title and course credit, then press 'Add course' button.
+  
+  If it is successful, it would show up a message.
 
 ********************************************
 # Project Status
 We apologize for the late implementation which cause the incomplete status of the task. 
 
-The page of admin has not already done so that those function of admin is fail to implement.
+The page of student and teacher has not already done so that those function of personal information and the assessment is fail to implement.
