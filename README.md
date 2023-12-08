@@ -22,7 +22,7 @@ Open steps:
 # Student record system
 This system is for managing student records of the School of Science and Technology.
 
-It is written in php language and managed by WAMP.
+It is written in html and php language, and managed by WAMP.
 
 ********************************************
 # Login
@@ -54,9 +54,14 @@ In the home page, each user can log out their account by clicking logout.
 
 ********************************************
 # Student
+After login, student can see their name on the page.
 - View academic record
+  Select the course that the student wants to check its acadmeic record
+  then student can see the assessment name and the score of corresponding assessment.
 - View personal information
+  Student can directly see their personal information on the page.
 - Edit/Update personal information
+  If student want to edit or update their personal information, they just need to click on the 'Edit' button and enter the content.
 
 ********************************************
 # Teacher
