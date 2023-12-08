@@ -1,10 +1,3 @@
-<!-- I want to test the page in html format 
-If need to test php please change to .php and test header.php and footer.php
-
-<?php include 'header.php';?>
-<?php include 'footer.php';?>
--->
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -19,146 +12,132 @@ If need to test php please change to .php and test header.php and footer.php
 <body>
     <h1>Admin</h1>
     
-<!-- HTML form to select a teacher for deletion -->
 <?php
-// Check if the form is submitted for deleting a teacher
 if (isset($_POST['delete_teacher'])) {
-    // Retrieve the selected teacher ID from the form data
     $teacherID = $_POST['teacher_id'];
 
-    // Establish a connection to the MySQL database
-    $conn = mysqli_connect("localhost", "username", "password", "academicrecord");
+    require "database.php";
 
-    // Check if the connection was successful
     if ($conn) {
-        // Execute the DELETE query to remove the selected teacher from the "teacher" table
-        $query = "DELETE FROM teacher WHERE teacherid = '$teacherID'";
+        $query = "DELETE FROM user,teacher WHERE userid='$teacherID' and teacherid = '$teacherID'";
         $result = mysqli_query($conn, $query);
 
         if ($result) {
-            // Deletion successful
             echo "Teacher deleted successfully.";
         } else {
-            // Error occurred during deletion
             echo "Error deleting teacher: " . mysqli_error($conn);
         }
-
-        // Close the database connection
-        mysqli_close($conn);
+    mysqli_close($conn);
     } else {
-        // Connection error
         echo "Failed to connect to the database.";
     }
 }
 
-// Check if the form is submitted for adding a teacher
 if (isset($_POST['add_teacher'])) {
-    // Retrieve the teacher details from the form data
     $teacherID = $_POST['teacher_id'];
     $teacherName = $_POST['teacher_name'];
     $teacherMobile = $_POST['teacher_mobile'];
 
-    // Establish a connection to the MySQL database
-    $conn = mysqli_connect("localhost", "username", "password", "academicrecord");
+    require "database.php";
 
-    // Check if the connection was successful
     if ($conn) {
-        // Execute the INSERT query to add a new row in the "teacher" table
-        $query = "INSERT INTO teacher (teacherid, name, mobile) VALUES ('$teacherID', '$teacherName', '$teacherMobile')";
+        $query = "INSERT INTO user (userid, role,password) VALUES ('$teacherID', 't', reverse('$teacherID'))";
         $result = mysqli_query($conn, $query);
-
+        
         if ($result) {
-            // Addition successful
+            $query = "INSERT INTO teacher (teacherid, name, mobile) VALUES ('$teacherID', '$teacherName', '$teacherMobile')";
+            $result = mysqli_query($conn, $query);
             echo "Teacher added successfully.";
         } else {
-            // Error occurred during addition
             echo "Error adding teacher: " . mysqli_error($conn);
         }
 
-        // Close the database connection
         mysqli_close($conn);
     } else {
-        // Connection error
         echo "Failed to connect to the database.";
     }
 }
 
-// Check if the form is submitted for deleting a student
 if (isset($_POST['delete_student'])) {
-    // Retrieve the selected student ID from the form data
     $studentID = $_POST['student_id'];
-
-    // Establish a connection to the MySQL database
-    $conn = mysqli_connect("localhost", "username", "password", "academicrecord");
-
-    // Check if the connection was successful
+    require "database.php";
     if ($conn) {
-        // Execute the DELETE query to remove the selected student from the "student" table
-        $query = "DELETE FROM student WHERE studentid = '$studentID'";
+        $query = "DELETE FROM user WHERE user.userid='$studentID' ";
         $result = mysqli_query($conn, $query);
 
         if ($result) {
-            // Deletion successful
+            $query = "DELETE FROM student WHERE studentid = '$studentID'";
+            $result = mysqli_query($conn, $query);
             echo "Student deleted successfully.";
         } else {
-            // Error occurred during deletion
             echo "Error deleting student: " . mysqli_error($conn);
         }
-
-        // Close the database connection
         mysqli_close($conn);
     } else {
-        // Connection error
         echo "Failed to connect to the database.";
     }
 }
 
-// Check if the form is submitted for adding a student
 if (isset($_POST['add_student'])) {
-    // Retrieve the student details from the form data
     $studentID = $_POST['student_id'];
     $studentName = $_POST['student_name'];
+    $studentCourse = $_POST['student_course'];
 
-    // Establish a connection to the MySQL database
-    $conn = mysqli_connect("localhost", "username", "password", "academicrecord");
+    require "database.php";
 
-    // Check if the connection was successful
     if ($conn) {
-        // Execute the INSERT query to add a new row in the "student" table
-        $query = "INSERT INTO student (studentid, name) VALUES ('$studentID', '$studentName')";
+        $query = "INSERT INTO user (userid, role,password) VALUES ('$studentID', 's', reverse('$studentID'))";
         $result = mysqli_query($conn, $query);
-
+        
         if ($result) {
-            // Addition successful
+            $query = "INSERT INTO student (studentid, sname,courseid) VALUES ('$studentID', '$studentName','$studentCourse')";
+            $result = mysqli_query($conn, $query);
             echo "Student added successfully.";
         } else {
-            // Error occurred during addition
             echo "Error adding student: " . mysqli_error($conn);
         }
-
-        // Close the database connection
         mysqli_close($conn);
     } else {
-        // Connection error
+        echo "Failed to connect to the database.";
+    }
+}
+
+if (isset($_POST['add_course'])) {
+    $courseID = $_POST['course_id'];
+    $courseTitle = $_POST['course_title'];
+    $courseCredit = $_POST['course_credit'];
+
+    require "database.php";
+
+    if ($conn) {
+        $query = "INSERT INTO course (courseid, title,credit) VALUES ('$courseID', '$courseTitle', '$courseCredit')";
+        $result = mysqli_query($conn, $query);
+        
+        if ($result) {
+            echo "Course added successfully.";
+        } else {
+            echo "Error adding course: " . mysqli_error($conn);
+        }
+
+        mysqli_close($conn);
+    } else {
         echo "Failed to connect to the database.";
     }
 }
 ?>
 
-<!-- HTML form to delete a teacher -->
 <h2>Delete Teacher</h2>
 <form method="POST">
     <label for="teacher_id">Select Teacher:</label>
     <select name="teacher_id">
-        <!-- Populate the dropdown list with teacher IDs from the database -->
         <?php
         require "database.php";
-        $query = "SELECT teacherid FROM teacher";
+        $query = "SELECT userid FROM user where role='t'";
         $result = mysqli_query($conn, $query);
 
         if ($result) {
             while ($row = mysqli_fetch_assoc($result)) {
-                echo "<option value='" . $row['teacherid'] . "'>" . $row['teacherid'] . "</option>";
+                echo "<option value='" . $row['userid'] . "'>" . $row['userid'] . "</option>";
             }
         }
 
@@ -168,7 +147,6 @@ if (isset($_POST['add_student'])) {
     <button type="submit" name="delete_teacher">Delete Teacher</button>
 </form>
 
-<!-- HTML form to add a teacher -->
 <h2>Add Teacher</h2>
 <form method="POST">
     <label for="teacher_id">Teacher ID:</label>
@@ -183,20 +161,18 @@ if (isset($_POST['add_student'])) {
     <button type="submit" name="add_teacher">Add Teacher</button>
 </form>
 
-<!-- HTML form to delete a student -->
 <h2>Delete Student</h2>
 <form method="POST">
     <label for="student_id">Select Student:</label>
     <select name="student_id">
-        <!-- Populate the dropdown list with student IDs from the database -->
         <?php
         require "database.php";
-        $query = "SELECT studentid FROM student";
+        $query = "SELECT userid FROM user where role='s'";
         $result = mysqli_query($conn, $query);
 
         if ($result) {
             while ($row = mysqli_fetch_assoc($result)) {
-                echo "<option value='" . $row['studentid'] . "'>" . $row['studentid'] . "</option>";
+                echo "<option value='" . $row['userid'] . "'>" . $row['userid'] . "</option>";
             }
         }
 
@@ -206,17 +182,29 @@ if (isset($_POST['add_student'])) {
     <button type="submit" name="delete_student">Delete Student</button>
 </form>
 
-<!-- HTML form to add a student -->
 <h2>Add Student</h2>
 <form method="POST">
     <label for="student_id">Student ID:</label>
     <input type="text" name="student_id" required><br>
-
     <label for="student_name">Student Name:</label>
     <input type="text" name="student_name" required><br>
+    <label for="student_course">Course code:</label>
+    <input type="text" name="student_course"><br>
 
     <button type="submit" name="add_student">Add Student</button>
 </form>
+
+<h2>Add Course</h2>
+<form method="POST">
+    <label for="course_id">course ID:</label>
+    <input type="text" name="course_id" required><br>
+    <label for="course_title">course title:</label>
+    <input type="text" name="course_title" required><br>
+    <label for="course_credit">course credit:</label>
+    <input type="number" name="course_credit" min=3 max=10><br>
+    <button type="submit" name="add_course">add course</button>
+</form>
+
     <button onclick="document.location='index.html'">Logout</button>
 </body>
 </html>

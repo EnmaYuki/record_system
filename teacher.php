@@ -78,8 +78,41 @@ if ($result->num_rows ) {
             echo "No student assessments found for the selected course.";
         }
     }
-    ?>
 
+    
+if (isset($_POST['add_assessment'])) {
+    $assessmentName = $_POST['a_id'];
+    $assessmentWeighting = $_POST['weighting'];
+    $assessmentTotal = $_POST['total'];
+
+    require "database.php";
+
+    if ($conn) {
+        $query = "INSERT INTO `assessment` (`id`, `courseid`, `aid`, `weighting`, `total_score`) VALUES ('$selectedCourseID', '$assessmentName', '$assessmentWeighting', '$assessmentTotal'";
+        $result = mysqli_query($conn, $query);
+        
+        if ($result) {
+            echo "Teacher added successfully.";
+        } else {
+            echo "Error adding teacher: " . mysqli_error($conn);
+        }
+
+        mysqli_close($conn);
+    } else {
+        echo "Failed to connect to the database.";
+    }
+}
+    ?>
+<h2>Add assessment</h2>
+<form method="POST">
+    <label for="a_id">assessment ID:</label>
+    <input type="text" name="a_id" required><br>
+    <label for="weighting">weighting:</label>
+    <input type="number" name="weighting" min=1 max=100 require><br>
+    <label for="total">total score:</label>
+    <input type="number" name="total" min=20 max=200 require><br>
+    <button type="submit" name="add_assessment">add assessement</button>
+</form>
     <br>
     <a href="reset_password.php">Reset Password</a>
     <br><a href="../index.php">Logout</a>

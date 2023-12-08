@@ -148,7 +148,7 @@ CREATE TABLE IF NOT EXISTS `student` (
   `id` int(8) NOT NULL AUTO_INCREMENT,
   `studentid` varchar(8) COLLATE utf8mb4_unicode_ci NOT NULL,
   `sname` varchar(20) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `courseid` varchar(5) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `courseid` varchar(5) COLLATE utf8mb4_unicode_ci NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `id` (`id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -175,7 +175,7 @@ CREATE TABLE IF NOT EXISTS `teacher` (
   `teacherid` varchar(8) COLLATE utf8mb4_unicode_ci NOT NULL,
   `name` varchar(20) COLLATE utf8mb4_unicode_ci NOT NULL,
   `mobile` varchar(25) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `courseid` varchar(5) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `courseid` varchar(5) COLLATE utf8mb4_unicode_ci NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
