@@ -52,7 +52,7 @@ if ($result->num_rows ) {
 </head>
 <body>
     <?php
-    echo '<pre>'; print_r($array); echo '</pre>';
+    echo '<pre>'; print_r($courses); echo '</pre>';
     ?>
     <h1>Student Record System (student)</h1>
     <p>student Name: <?php echo $studentName; ?></p>
