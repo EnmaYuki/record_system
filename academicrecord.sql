@@ -53,7 +53,7 @@ INSERT INTO `admin` (`id`, `adminID`) VALUES
 DROP TABLE IF EXISTS `assessment`;
 CREATE TABLE IF NOT EXISTS `assessment` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `courseid` varchar(5) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `courseid` varchar(7) COLLATE utf8mb4_unicode_ci NOT NULL,
   `aid` varchar(4) COLLATE utf8mb4_unicode_ci NOT NULL,
   `weighting` int(2) NOT NULL,
   `total_score` int(3) NOT NULL,
@@ -88,7 +88,7 @@ DROP TABLE IF EXISTS `assessment_record`;
 CREATE TABLE IF NOT EXISTS `assessment_record` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `student_id` varchar(8) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `course_id` varchar(5) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `course_id` varchar(7) COLLATE utf8mb4_unicode_ci NOT NULL,
   `aid` varchar(4) COLLATE utf8mb4_unicode_ci NOT NULL,
   `score` double NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
@@ -120,7 +120,7 @@ INSERT INTO `assessment_record` (`id`, `student_id`, `course_id`, `aid`, `score`
 
 DROP TABLE IF EXISTS `course`;
 CREATE TABLE IF NOT EXISTS `course` (
-  `courseid` varchar(5) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `courseid` varchar(7) COLLATE utf8mb4_unicode_ci NOT NULL,
   `title` varchar(30) COLLATE utf8mb4_unicode_ci NOT NULL,
   `credit` int(2) NOT NULL,
   PRIMARY KEY (`courseid`),
@@ -148,7 +148,7 @@ CREATE TABLE IF NOT EXISTS `student` (
   `id` int(8) NOT NULL AUTO_INCREMENT,
   `studentid` varchar(8) COLLATE utf8mb4_unicode_ci NOT NULL,
   `sname` varchar(20) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `courseid` varchar(5) COLLATE utf8mb4_unicode_ci NULL,
+  `courseid` varchar(7) COLLATE utf8mb4_unicode_ci NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `id` (`id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -175,7 +175,7 @@ CREATE TABLE IF NOT EXISTS `teacher` (
   `teacherid` varchar(8) COLLATE utf8mb4_unicode_ci NOT NULL,
   `name` varchar(20) COLLATE utf8mb4_unicode_ci NOT NULL,
   `mobile` varchar(25) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `courseid` varchar(5) COLLATE utf8mb4_unicode_ci NULL,
+  `courseid` varchar(7) COLLATE utf8mb4_unicode_ci NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
