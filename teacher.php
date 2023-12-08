@@ -1,17 +1,13 @@
 <?php
 session_start();
 
-// Check if the user is logged in as a teacher
 if ($_SESSION['username'][0] != 't') {
     header("Location: login.php");
     exit();
 }
-//print("g");
-// Get the user ID from the session
 $userid = substr($_SESSION['username'], 1);
 require "database.php";
 
-// Prepare the SQL query to retrieve the teacher's name
 $sql = "SELECT * FROM teacher, course WHERE teacherid = '$userid' and course.courseid= teacher.courseid";
 
 $result = $conn->query($sql);
@@ -25,23 +21,7 @@ if ($result->num_rows ) {
         $courseName = $row["title"];
         $courses[$courseID] = $courseName;        
     }
-    /*
-        // Output data of the first row
-        $row = $result->fetch_assoc();
-        $teacherName = $row["name"];
-        $courseName = $row["title"];
-        $courses = array();
-        
-        // Fetch all the courses the teacher is responsible for
-        while ($row = $result->fetch_assoc()) {
-            $courseID = $row["courseid"];
-            $courseTitle = $row["title"];
-            $courses[$courseID] = $courseTitle;
-        }
-    */
 }
-
-//$conn->close();
 ?>
 
 
@@ -72,8 +52,7 @@ if ($result->num_rows ) {
     <?php
     if (isset($_POST['course'])) {
         $selectedCourseID = $_POST['course'];
-        //$sql = "SELECT distinct student.studentid,assessment_record.aid, assessment_record.score FROM  student INNER JOIN assessment_record ON student.studentid = assessment_record.student_id WHERE assessment_record.course_id = '$selectedCourseID'";
-        $sql = "SELECT distinct student.studentid,assessment_record.aid, assessment_record.score, total_score FROM  (student INNER JOIN assessment_record ON student.studentid = assessment_record.student_id),assessment WHERE assessment_record.course_id = '$selectedCourseID' AND assessment.aid=assessment_record.aid and assessment.courseid=assessment_record.course_id;";
+       $sql = "SELECT distinct student.studentid,assessment_record.aid, assessment_record.score, total_score FROM  (student INNER JOIN assessment_record ON student.studentid = assessment_record.student_id),assessment WHERE assessment_record.course_id = '$selectedCourseID' AND assessment.aid=assessment_record.aid and assessment.courseid=assessment_record.course_id;";
         $result = $conn->query($sql);
 
         if ($result->num_rows > 0) {

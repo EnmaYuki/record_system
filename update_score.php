@@ -3,9 +3,8 @@ error_reporting(E_ALL);
 ini_set('display_errors', 1);
 session_start();
 
-// Check if the user is logged in as a teacher
 if ($_SESSION['username'][0] != 't') {
-    header("Location: index.php");
+    header("Location: record_system/index.php");
     exit();
 }
 
@@ -17,7 +16,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     require "database.php";
 
-    // Update the assessment score in the database
     $sql = "UPDATE assessment_record 
             SET score = '$newScore' 
             WHERE course_id = '$courseID' AND student_id = '$studentID' AND aid = '$assessmentName'";
