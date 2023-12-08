@@ -53,7 +53,7 @@ if ($result->num_rows>0 ) {
     <?php
     if (isset($_POST['course'])) {
         $selectedCourseID = $_POST['course'];
-        $sql = "SELECT `course`.`title`,4*sum((`assessment_record`.`score`/`assessment`.`total_score`)*(`assessment`.`weighting`/100))as `gpa` from `student`,`course`,`assessment`,`assessment_record`where  `assessment`.`aid`=`assessment_record`.`aid` and `assessment`.`courseid`=`student`.`courseid` and `assessment_record`.`course_id`=`assessment`.`courseid` and `course`.`courseid`=`student`.`courseid` and student.courseid='$selectedCourseID';";
+        $sql = "SELECT `course`.`title`,round(4.5*sum((`assessment_record`.`score`/`assessment`.`total_score`)*(`assessment`.`weighting`/100)),2)as `gpa` from `student`,`course`,`assessment`,`assessment_record`where  `assessment`.`aid`=`assessment_record`.`aid` and `assessment`.`courseid`=`student`.`courseid` and `assessment_record`.`course_id`=`assessment`.`courseid` and `course`.`courseid`=`student`.`courseid` and student.courseid='$selectedCourseID';";
         $result = $conn->query($sql);
 
         if ($result->num_rows > 0) {
