@@ -6,7 +6,7 @@ if ($_SESSION['username'][0] != 't') {
     header("Location: login.php");
     exit();
 }
-
+print("g");
 // Get the user ID from the session
 $userid = substr($_SESSION['username'], 1);
 require "database.php";

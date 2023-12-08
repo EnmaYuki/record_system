@@ -5,10 +5,10 @@
   $dbname = "academicrecord";
   // Database user account
   //$dbuser = "root";
-  $dbuser = "group27";
+  $dbuser = "root";
   // Database password
   //$dbpassword = "";
-  $dbpassword = "350group27";
+  $dbpassword = "";
   
   // Create connection
   $conn = new mysqli($servername, $dbuser, $dbpassword, $dbname);

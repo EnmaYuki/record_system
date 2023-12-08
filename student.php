@@ -1,12 +1,10 @@
 <?php
 session_start();
-
 // Check if the user is logged in as a teacher
 if ($_SESSION['username'][0] != 's') {
     header("Location: login.php");
     exit();
 }
-
 // Get the user ID from the session
 $userid = substr($_SESSION['username'], 1);
 require "database.php";
@@ -104,6 +102,6 @@ if ($result->num_rows>0 ) {
 
     <br>
     <a href="reset_password.php">Reset Password</a>
-    <br><a href="../index.php">Logout</a>
+    <br><a href="index.php">Logout</a>
 </body>
 </html>
