@@ -14,15 +14,15 @@ Application link: https://github.com/EnmaYuki/record_system.git
 WAMP (Version: 3.2.6) link: https://drive.google.com/file/d/1iQNaMOt6-pfZYQaZuUhyuB-7Dh8TVBQI/view?usp=drive_link
 
 Open steps:
-1. After installing the wamp, opening the broswer and entering localhost. If it is successul, you can see the WAMP Server interface.
+1. After installing the WAMP, opening the broswer and entering 'localhost'. If it is successful, you can see the WAMP Server interface.
 2. Then download the zip folder on the github through the application link, and unzip it to the www folder in the wamp64 folder
-3. Going back to the broswer, entering '/' and the folder name. If it is successful, you may see the index of the system.
+3. Going back to the broswer, entering '/' after the 'localhost' and the folder name. If it is successful, you may see the index of the system.
 
 ********************************************
 # Student record system
 This system is for managing student records of the School of Science and Technology.
 
-It is convenience to open through the broswer, so the user can access easily.
+It is written in php language and managed by WAMP.
 
 ********************************************
 # Login
