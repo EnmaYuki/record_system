@@ -18,6 +18,12 @@ Open steps:
 2. Then download the zip folder on the github through the application link, and unzip it to the www folder in the wamp64 folder
 3. Going back to the broswer, entering '/' after the 'localhost' and the folder name. If it is successful, you may see the index of the system.
 
+Open database steps:
+1. Finding the icon of WAMP in the arrow in task column, then left click it to select the PhpMyAdmin whether any version.
+2. Select the language which want to set up, then enter 'root' in the username.
+3. The password fill in blank and checking that the server choice is MYSQL.
+4. After pressing the 'Go' button, you can successfully enter the database.
+
 ********************************************
 # Student record system
 This system is for managing student records of the School of Science and Technology.
