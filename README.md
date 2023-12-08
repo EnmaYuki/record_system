@@ -57,9 +57,9 @@ In the home page, each user can log out their account by clicking logout.
 After login, student can see their name on the page.
 - View academic record
   
-  Select the course that the student wants to check its acadmeic record
+  1. Select the course that the student wants to check its acadmeic record
   
-  then student can see the assessment name and the score of corresponding assessment.
+  2. Then student can see the assessment name and the score of corresponding assessment.
   
 - View personal information
   Student can directly see their personal information on the page.
