@@ -51,6 +51,9 @@ if ($result->num_rows ) {
     <title>Student Record System (Student)</title>
 </head>
 <body>
+    <?php
+    echo '<pre>'; print_r($array); echo '</pre>';
+    ?>
     <h1>Student Record System (student)</h1>
     <p>student Name: <?php echo $studentName; ?></p>
     <h3>Course</h3>
