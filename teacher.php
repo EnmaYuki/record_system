@@ -79,8 +79,8 @@ if ($result->num_rows ) {
         }
     }
 
-    
-if (isset($_POST['add_assessment'])) {
+    /*
+    if (isset($_POST['add_assessment'])) {
     $assessmentName = $_POST['a_id'];
     $assessmentWeighting = $_POST['weighting'];
     $assessmentTotal = $_POST['total'];
@@ -101,8 +101,9 @@ if (isset($_POST['add_assessment'])) {
     } else {
         echo "Failed to connect to the database.";
     }
-}
+}*/
     ?>
+    <!--
 <h2>Add assessment</h2>
 <form method="POST">
     <label for="a_id">assessment ID:</label>
@@ -113,6 +114,7 @@ if (isset($_POST['add_assessment'])) {
     <input type="number" name="total" min=20 max=200 require><br>
     <button type="submit" name="add_assessment">add assessement</button>
 </form>
+-->
     <br>
     <a href="reset_password.php">Reset Password</a>
     <br><a href="../index.php">Logout</a>
