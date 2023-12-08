@@ -2,6 +2,7 @@
  Student record system
 
 Group: 27
+
 Name: 
 Lam Yin Ying Elayne(12239282).
 Lai Joe Wing(13261888).
@@ -10,7 +11,12 @@ Yeung Nga Ting Winnie(13382717)
 
 Application link: https://github.com/EnmaYuki/record_system.git
 
-WAMP link: https://drive.google.com/file/d/1iQNaMOt6-pfZYQaZuUhyuB-7Dh8TVBQI/view?usp=drive_link
+WAMP (Version: 3.2.6) link: https://drive.google.com/file/d/1iQNaMOt6-pfZYQaZuUhyuB-7Dh8TVBQI/view?usp=drive_link
+
+Open steps:
+1. After installing the wamp, opening the broswer and entering localhost. If it is successul, you can see the WAMP Server interface.
+2. Then download the zip folder on the github through the application link, and unzip it to the www folder in the wamp64 folder
+3. Going back to the broswer, entering '/' and the folder name. If it is successful, you may see the index of the system.
 
 ********************************************
 # Student record system
