@@ -95,6 +95,7 @@ After login, teacher can see their name on the page.
   If they want to update the score, they just need to enter the score and click on the 'Update' button.
 
 - Add assessment
+
   Teacher can add assessment by entering id, courseid, aid, weighting and total score, then press 'Add assessment' button.
 
 ********************************************
