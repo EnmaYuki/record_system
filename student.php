@@ -16,7 +16,7 @@ $sql = "SELECT * FROM student, course WHERE studentid = '$userid' and course.cou
 
 $result = $conn->query($sql);
 
-if ($result->num_rows ) {
+if ($result->num_rows>0 ) {
 
     $courses = array();
     while ($row = $result->fetch_assoc()) {
