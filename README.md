@@ -115,6 +115,7 @@ After login, admin can see the functions.
   If it is successful, it would show up a message.
 
 - Edit course information
+  
   Add course by entering the course id, course title and course credit, then press 'Add course' button.
   
   If it is successful, it would show up a message.
