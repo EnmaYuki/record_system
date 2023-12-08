@@ -9,7 +9,7 @@ Lai Joe Wing(13261888).
 Li Siu Kit(13342258).
 Yeung Nga Ting Winnie(13382717)
 
-Application link: https://github.com/EnmaYuki/record_system.git
+Github link: https://github.com/EnmaYuki/record_system.git
 
 WAMP (Version: 3.2.6) link: https://drive.google.com/file/d/1iQNaMOt6-pfZYQaZuUhyuB-7Dh8TVBQI/view?usp=drive_link
 
