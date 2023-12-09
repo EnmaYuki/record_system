@@ -111,7 +111,8 @@ After login, admin can see the functions.
 - Edit students
   1. Select the student id which want to be deleted, then press 'Delete Student' button.
   2. Add teacher by entering the student id, student name and course code, then press 'Add Student' button.
-  *The new student do not have gpa, so their academic record cannot be updated.
+  
+  *The new student does not have gpa, so the academic record cannot be updated.
   
   If it is successful, it would show up a message.
 
